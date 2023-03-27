@@ -182,8 +182,11 @@ const Form = () => {
                   <Dropzone
                     acceptedFiles=".jpg,.jpeg,.png"
                     multiple={false}
-                    onDrop={(acceptedFiles) =>
+                    onDrop={(acceptedFiles) => {
+                      console.log(acceptedFiles)
                       setFieldValue("picture", acceptedFiles[0])
+                    }
+                      
                     }
                   >
                     {({ getRootProps, getInputProps }) => (

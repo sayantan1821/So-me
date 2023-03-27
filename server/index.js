@@ -54,12 +54,12 @@ app.use("/posts", postRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
-const username = 'admin01'
-const password = '123'
-const dbname = 'Sociopedia'
+// const username = 'admin01'
+// const password = '123'
+// const dbname = 'Sociopedia'
 mongoose.set("strictQuery", false);
 mongoose
-  .connect(`mongodb+srv://${username}:${password}@cluster0.opzyn.mongodb.net/${dbname}?retryWrites=true&w=majority`, {
+  .connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_SECRET_KEY}/${process.env.DB_NAME}?retryWrites=true&w=majority&ssl=true`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

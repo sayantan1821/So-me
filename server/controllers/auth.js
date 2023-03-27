@@ -42,6 +42,7 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
+    // console.log(req.body);
     // const email= '1906635@kiit.ac.in'
     // const password = '123'
     const user = await User.findOne({ email: email });
