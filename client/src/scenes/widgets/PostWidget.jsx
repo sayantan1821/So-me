@@ -52,7 +52,7 @@ const PostWidget = ({
   };
 
   const handleComment = async() => {
-    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/posts/${postId}/${loggedInUserId}/comment`,{
+    const response = await fetch(`http://localhost:6001/posts/${postId}/${loggedInUserId}/comment`,{
       method:"POST",
       headers: {
         Authorization: `Bearer ${token}`,
