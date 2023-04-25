@@ -82,7 +82,8 @@ const PostWidget = ({
           height="auto"
           alt="post"
           style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
-          src={`${picturePath}`}
+          // src={`${picturePath}`}
+          src={`http://localhost:6001/assets/${picturePath}`}
         />
       )}
       <FlexBetween mt="0.25rem">
