@@ -10,7 +10,7 @@ import FlexBetween from "components/FlexBetween";
 import Friend from "components/Friend";
 // import UserImage from "components/UserImage";
 import WidgetWrapper from "components/WidgetWrapper";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPost } from "state";
 
@@ -38,8 +38,11 @@ const PostWidget = ({
   const main = palette.neutral.main;
   const primary = palette.primary.main;
 
+  useEffect(() => {
+    //Runs only on the first render
+  }, [likes, comments]);
   const patchLike = async () => {
-    const response = await (`${process.env.REACT_APP_SERVER_URL}/posts/${postId}/like`, {
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/posts/${postId}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -48,7 +51,7 @@ const PostWidget = ({
       body: JSON.stringify({ userId: loggedInUserId }),
     });
     console.log(response);
-    const updatedPost = await response;
+    const updatedPost = await response.json();
     dispatch(setPost({ post: updatedPost }));
   };
 
